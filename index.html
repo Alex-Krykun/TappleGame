@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buttons from A to Z</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .btn-primary {
+      background-color: blue;
+      border-color: blue;
+      margin-right: 5%;
+      margin-top: 5%;
+    }
+    .btn-primary.active, .btn-primary:active {
+      background-color: red !important;
+      border-color: red !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+         <div class="timer">Begin Game!</div>
+         <div class="row">
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">A</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">B</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">C</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">D</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">E</button>
+         </div>
+         <div class="row">
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">F</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">G</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">H</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">I</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">J</button>
+         </div>
+         <div class="row">
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">K</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">L</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">M</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">N</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">O</button>
+         </div>
+         <div class="row">
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">P</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">Q</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">R</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">S</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">T</button>
+         </div>
+         <div class="row">
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">U</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">V</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">W</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">X</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">Y</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="toggleButton(this)">Z</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="resetAll()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function toggleButton(button) {
+      button.classList.toggle('active');
+      startTimer();
+    }
+
+    function resetAll() {
+      startTimer();
+      var buttons = document.querySelectorAll('.btn-primary');
+      buttons.forEach(function(button) {
+        button.classList.remove('active');
+      });
+    }
+
+    var timer = 10;
+    var intervalId;
+
+    function startTimer() {
+      clearInterval(intervalId);
+      timer = 10;
+      intervalId = setInterval(function() {
+        timer--;
+        if (timer < 1) {
+          clearInterval(intervalId);
+          document.querySelector('.timer').innerHTML = 'Failed';
+        } else {
+          document.querySelector('.timer').innerHTML = timer;
+        }
+      }, 1000);
+    }
+
+  </script>
+</body>
+</html>
