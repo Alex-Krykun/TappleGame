@@ -67,8 +67,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
     function toggleButton(button) {
-      button.classList.toggle('active');
-      startTimer();
+        if (document.querySelector('.timer').innerHTML != 'Failed'){
+            button.classList.toggle('active');
+            startTimer();
+        }
     }
 
     function resetAll() {
@@ -79,12 +81,12 @@
       });
     }
 
-    var timer = 10;
+    var timer = 100;
     var intervalId;
 
     function startTimer() {
       clearInterval(intervalId);
-      timer = 10;
+      timer = 100;
       intervalId = setInterval(function() {
         timer--;
         if (timer < 1) {
@@ -93,7 +95,7 @@
         } else {
           document.querySelector('.timer').innerHTML = timer;
         }
-      }, 1000);
+      }, 100);
     }
 
   </script>
